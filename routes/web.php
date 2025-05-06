@@ -35,6 +35,8 @@ Route::prefix('/calc')->group(function () {
 //Keepinho
 Route::prefix('/keep')->group(function () {
     Route::get('/', [KeepinhoController::class,'index'])->name('keep');
-
     Route::post('/gravar', [KeepinhoController::class,'gravar'])->name('keep.gravar');
+    Route::get('/editar/{nota}', [KeepinhoController::class,'editar'])->name('keep.editar');
+    Route::put('/editar', [KeepinhoController::class,'editar'])->name('keep.editarGravar');
+    Route::delete('/apagar/{nota}', [KeepinhoController::class,'apagar'])->name('keep.apagar');
 });
