@@ -49,5 +49,4 @@ Route::prefix('/restaurantes')->group(function () {
     Route::post('/adicionar/salvar', [RestaurantesController::class,'salvar'])->name('restaurantes.salvar');
     Route::get('/editar/{restaurante}', [RestaurantesController::class,'editar'])->name('restaurantes.editar');
     Route::put('/editar', [RestaurantesController::class,'editar'])->name('restaurantes.editarSalvar');
-    // Route::delete('/apagar/', [RestaurantesController::class,'apagar'])->name('keep.apagar');
 });
