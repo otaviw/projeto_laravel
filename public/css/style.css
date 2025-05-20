@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #F3F0F9;
+    color: #333;
+    padding: 40px 20px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+}
+
+/* Cabeçalho */
+h1 {
+    font-size: 2.8rem;
+    color: #7E57C2;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Erros */
+.error-box {
+    background: #f8e5f1;
+    color: #a1005e;
+    border-left: 5px solid #c2185b;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+}
+
+/* Formulário */
+form {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 40px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #7E57C2;
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: #7E57C2;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #673AB7;
+}
+
+/* Cartões de notas */
+.notes {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.note-card {
+    background-color: #eee5ff;
+    border-left: 5px solid #7E57C2;
+    border-radius: 12px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    word-break: break-word;
+}
+
+.note-card h4 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #4a148c;
+}
+
+.note-card p {
+    flex: 1;
+    color: #333;
+}
+
+.note-card a {
+    color: #5e35b1;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.note-card a:hover {
+    text-decoration: underline;
+}
+
+.note-card form {
+    margin-top: 10px;
+}
+
+.form-delete {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.form-delete input {
+    background-color: none;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .note-card {
+        width: 100%;
+    }
+
+    form {
+        width: 100%;
+    }
+}
