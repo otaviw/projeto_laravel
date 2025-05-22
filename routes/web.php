@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 //testes
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('keep');
 });
 
 Route::get('/teste', function () {
@@ -40,6 +40,8 @@ Route::prefix('/keep')->group(function () {
     Route::get('/editar/{nota}', [KeepinhoController::class,'editar'])->name('keep.editar');
     Route::put('/editar', [KeepinhoController::class,'editar'])->name('keep.editarGravar');
     Route::delete('/apagar/{nota}', [KeepinhoController::class,'apagar'])->name('keep.apagar');
+    Route::get('/lixeira', [KeepinhoController::class, 'lixeira'])->name('keep.lixeira');
+    route::get('/restaurar/{nota}', [KeepinhoController::class,'restaurar'])->name('keep.restaurar');
 });
 
 //Restaurantes

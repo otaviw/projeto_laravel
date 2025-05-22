@@ -6,6 +6,9 @@
 
     <hr style="margin:20px 0px">
 
+    <a href="{{ route('keep.lixeira') }}">🗑️ Lixeira</a>
+    <br>
+
     @if ($errors->any())
     <div class="error-box">
         <h3>ERRO!</h3>
