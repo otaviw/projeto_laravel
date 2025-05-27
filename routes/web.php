@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AutenticaController;
 use App\Http\Controllers\CalculosController;
 use App\Http\Controllers\KeepinhoController;
 use App\Http\Controllers\RestaurantesController;
@@ -52,3 +53,8 @@ Route::prefix('/restaurantes')->group(function () {
     Route::get('/editar/{restaurante}', [RestaurantesController::class,'editar'])->name('restaurantes.editar');
     Route::put('/editar', [RestaurantesController::class,'editar'])->name('restaurantes.editarSalvar');
 });
+
+Route::get('/autenticar', [AutenticaController::class, 'index'])->name('autentica');
+Route::post('/autenticar/gravar', [AutenticaController::class, 'gravar'])->name('autentica.gravar');
+Route::get('/autenticar/login', [AutenticaController::class, 'login'])->name('autentica.login');
+Route::post('/autenticar/login', [AutenticaController::class, 'login']);
