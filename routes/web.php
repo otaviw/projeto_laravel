@@ -1,20 +1,31 @@
 <?php
 
-use App\Http\Controllers\AutenticaController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalculosController;
 use App\Http\Controllers\KeepinhoController;
 use App\Http\Controllers\RestaurantesController;
-use Illuminate\Support\Facades\Route;
 
-
-//testes
 Route::get('/', function () {
-    return redirect()->route('keep');
+    return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
 
 Route::get('/teste', function () {
     return view('teste');
 });
+
 
 Route::get('/teste/{valor}', function ($valor) {
     return "voce digitou: {$valor}";
@@ -54,7 +65,7 @@ Route::prefix('/restaurantes')->group(function () {
     Route::put('/editar', [RestaurantesController::class,'editar'])->name('restaurantes.editarSalvar');
 });
 
-Route::get('/autenticar', [AutenticaController::class, 'index'])->name('autentica');
-Route::post('/autenticar/gravar', [AutenticaController::class, 'gravar'])->name('autentica.gravar');
-Route::get('/autenticar/login', [AutenticaController::class, 'login'])->name('autentica.login');
-Route::post('/autenticar/login', [AutenticaController::class, 'login']);
+// Route::get('/autenticar', [AutenticaController::class, 'index'])->name('autentica');
+// Route::post('/autenticar/gravar', [AutenticaController::class, 'gravar'])->name('autentica.gravar');
+// Route::get('/autenticar/login', [AutenticaController::class, 'login'])->name('autentica.login');
+// Route::post('/autenticar/login', [AutenticaController::class, 'login']);

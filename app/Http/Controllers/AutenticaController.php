@@ -10,7 +10,8 @@ use Illuminate\Http\Request;
 class AutenticaController extends Controller
 {
     public function index(){
-        return view('autentica.index');
+        $usuarios = User::all();
+        return view('autentica.index', compact('usuarios'));
     }
 
     public function gravar(AutenticarRequest $request){
@@ -28,5 +29,10 @@ class AutenticaController extends Controller
         }
 
         return view("autentica.login");
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('autentica');
     }
 }
