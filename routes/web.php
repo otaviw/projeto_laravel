@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalculosController;
@@ -69,3 +70,5 @@ Route::prefix('/restaurantes')->group(function () {
 // Route::post('/autenticar/gravar', [AutenticaController::class, 'gravar'])->name('autentica.gravar');
 // Route::get('/autenticar/login', [AutenticaController::class, 'login'])->name('autentica.login');
 // Route::post('/autenticar/login', [AutenticaController::class, 'login']);
+
+Route::resource('produtos', ProdutosController::class);
