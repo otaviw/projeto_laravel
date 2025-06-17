@@ -14,6 +14,22 @@
                     </x-link-button>
                 </div>
             </div>
+ 
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach ($produtos as $produto)
+                    <div class="bg-white dark:bg-gray-700 p-4 rounded shadow">
+                        <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">{{ $produto->nome }}</h3>
+                        <p class="text-gray-700 dark:text-gray-300">R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-2">{{ $produto->descricao }}</p>
+
+                        @if ($produto->image)
+                            <img src="{{ asset('storage/' . $produto->image) }}" alt="Imagem do Produto" class="w-full h-48 object-cover rounded">
+                        @else
+                            <p class="text-sm italic text-gray-400">Sem imagem</p>
+                        @endif
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 </x-app-layout>

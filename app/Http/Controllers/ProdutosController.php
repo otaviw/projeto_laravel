@@ -12,7 +12,8 @@ class ProdutosController extends Controller
      */
     public function index()
     {
-        return view('produtos.index');
+        $produtos = Produto::all();
+        return view('produtos.index', compact('produtos'));
     }
 
     /**
@@ -28,8 +29,25 @@ class ProdutosController extends Controller
      */
     public function store(Request $request)
     {
-        Produto::create($request->all());
+        $dados = $request->validate([
+            'nome' => 'required|string|max:255',
+            'preco' => 'required|numeric',
+            'descricao' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        
+        if ($request->hasFile('image')) {
+            $imagem = $request->file('image');
+            $caminhoImagem = $imagem->store('produtos', 'public');
+            $dados['image'] = $caminhoImagem;
+        }
+        
+        Produto::create(
+            $dados
+        );
+
         return redirect()->route('produtos.index');
+        
     }
 
     /**
