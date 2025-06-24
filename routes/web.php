@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CalculosController;
 use App\Http\Controllers\KeepinhoController;
 use App\Http\Controllers\RestaurantesController;
+use App\Http\Controllers\CarrinhoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -72,3 +73,9 @@ Route::prefix('/restaurantes')->group(function () {
 // Route::post('/autenticar/login', [AutenticaController::class, 'login']);
 
 Route::resource('produtos', ProdutosController::class);
+
+Route::prefix('/carrinho')->group(function (){
+    Route::get('/', [CarrinhoController::class, 'index'])->name('carrinho');
+    Route::get('/adicionar/{produto}', [CarrinhoController::class, 'adicionar'])->name('carrinho.adicionar');
+    Route::delete('/remover/{produto}', [CarrinhoController::class, 'remover'])->name('carrinho.remover');
+});

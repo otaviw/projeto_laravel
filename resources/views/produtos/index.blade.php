@@ -8,9 +8,13 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
+                <div class="p-6 text-gray-900 dark:text-gray-100 flex justify-between">
                     <x-link-button href="{{ route('produtos.create') }}">
                         + Produto
+                    </x-link-button>
+
+                    <x-link-button href="{{ route('carrinho') }}">
+                        Ver carrinho
                     </x-link-button>
                 </div>
             </div>
@@ -27,6 +31,9 @@
                         @else
                             <p class="text-sm italic text-gray-400">Sem imagem</p>
                         @endif
+                        <x-link-button href="{{ route('carrinho.adicionar', $produto) }}" class="mt-4">
+                            + Adicionar ao carrinho
+                        </x-link-button>
                     </div>
                 @endforeach
             </div>
