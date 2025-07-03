@@ -23,6 +23,7 @@
                 @foreach ($produtos as $produto)
                     <div class="bg-white dark:bg-gray-700 p-4 rounded shadow">
                         <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100">{{ $produto->nome }}</h3>
+                        <p class="text-gray-700 dark:text-gray-300">{{ $produto->categoria->nome}}</p>
                         <p class="text-gray-700 dark:text-gray-300">R$ {{ number_format($produto->preco, 2, ',', '.') }}</p>
                         <p class="text-gray-600 dark:text-gray-400 mb-2">{{ $produto->descricao }}</p>
 

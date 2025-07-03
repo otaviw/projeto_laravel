@@ -34,6 +34,13 @@
                             <x-textarea id="descricao" class="block mt-1 w-full" name="descricao" required autofocus autocomplete="descricao">{{ old('descricao') }}</x-textarea>
                             <x-input-error :messages="$errors->get('descricao')" class="mt-2" />
                         </div>
+                        <div>
+                            <select name="categorias_id" id="categoria">
+                                @foreach ( $categorias as $categoria )
+                                    <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
+                                @endforeach
+                            </select>
+                        </div>
 
                         <div>
                             <x-input-label for="image" :value="__('Imagem')" />
